@@ -7,7 +7,7 @@ const VC_DM_TOTAL = 73.36 + 106.71;
 const VC = {
     dmVdm: 73.36, dmVls: 106.71,
     sharedHostingYr: 3686.44, perUserHostingYr: 571.20,
-    tierMargins: {
+    tierMargins: 
           Essential:        { dm: 0.90, hosting: 0.70 },
           "Essential Plus": { dm: 0.90, hosting: 0.70 },
           Enhanced:         { dm: 0.90, hosting: 0.70 },
@@ -265,17 +265,17 @@ function DiscBlock({ disc, setDisc, deal, guardrails, accentColor }) {
                                                               onChange={e => setDisc(Math.max(0, Math.min(60, parseFloat(e.target.value)||0)))}
                                                               style={{ borderColor: o2||o3 ? "#e74c3c" : o1 ? "#f0c36d" : "#c8d6e5" }} />
                                               <span className="inp-suffix">%</span>span>
-                                  </div>div>
-                        </div>div>
-                  {disc > 0 && deal && <div style={{ fontSize:15, color:"#5a6f87", paddingTop:22 }}>{"\u2212"}{fmt(deal.discAmt)}</div>div>}
-                </div>div>
+                                  </div></div>
+                        </div></div>
+                  {disc > 0 && deal && <div style={{ fontSize:15, color:"#5a6f87", paddingTop:22 }}>{"\u2212"}{fmt(deal.discAmt)}</div></div>}
+                </div></div>
                 <div style={{ fontSize:14, color:"#5a6f87", marginTop:6 }}>
                         You may discount this deal — all deals must maintain a minimum 76% blended margin.
-                </div>div>
-            {o1 && <div style={{ background:"#fef9e7", border:"1px solid #f0c36d", borderRadius:6, padding:"7px 12px", fontSize:14, color:"#7d6608", marginTop:6 }}>⚠️ Above standard range ({g.suggested}%). Document business justification.</div>div>}
-            {o2 && <div style={{ background:"#fde8e8", border:"1px solid #e6a1a1", borderRadius:6, padding:"7px 12px", fontSize:14, color:"#922", marginTop:6 }}>🔴 Above {g.approval}% — requires Sales Leadership sign-off before quoting.</div>div>}
-            {o3 && <div style={{ background:"#fde8e8", border:"1px solid #c0392b", borderRadius:6, padding:"7px 12px", fontSize:14, color:"#c0392b", fontWeight:600, marginTop:6 }}>🚫 Above maximum ({g.max}%). Not authorized — contact VP of Sales.</div>div>}
-          </div>div>
+                </div></div>
+            {o1 && <div style={{ background:"#fef9e7", border:"1px solid #f0c36d", borderRadius:6, padding:"7px 12px", fontSize:14, color:"#7d6608", marginTop:6 }}>⚠️ Above standard range ({g.suggested}%). Document business justification.</div></div>}
+            {o2 && <div style={{ background:"#fde8e8", border:"1px solid #e6a1a1", borderRadius:6, padding:"7px 12px", fontSize:14, color:"#922", marginTop:6 }}>🔴 Above {g.approval}% — requires Sales Leadership sign-off before quoting.</div></div>}
+            {o3 && <div style={{ background:"#fde8e8", border:"1px solid #c0392b", borderRadius:6, padding:"7px 12px", fontSize:14, color:"#c0392b", fontWeight:600, marginTop:6 }}>🚫 Above maximum ({g.max}%). Not authorized — contact VP of Sales.</div></div>}
+          </div></div>
         );
 }
 
@@ -286,25 +286,25 @@ function PriceFooter({ deal, isVision, accentColor }) {
     const swThresh = isVision ? 0.6 : 0.7;
     return (
           <div style={{ marginTop:4 }}>
-                <div className="dl-total"><span>Total</span>span><span style={{ fontSize:22 }}>{fmt(deal.final)}</span>span></div>div>
+                <div className="dl-total"><span>Total</span>span><span style={{ fontSize:22 }}>{fmt(deal.final)}</span>span></div></div>
                 <div style={{ fontSize:13, color:"#5a6f87", marginTop:8, fontStyle:"italic" }}>
                         *New logo pricing; discount to 76% margin floor permitted to minimize price increase at renewal.
-                </div>div>
+                </div></div>
                 <div style={{ display:"flex", gap:8, marginTop:10, flexWrap:"wrap" }}>
                         <span className={"badge " + (deal.swMgn >= swThresh ? "badge-g" : deal.swMgn >= .4 ? "badge-y" : "badge-r")}>SW: {pct(deal.swMgn)}</span>span>
                         <span className={"badge " + (m >= .76 ? "badge-g" : m >= .55 ? "badge-y" : "badge-r")}>Blended: {pct(m)}</span>span>
                   {deal.belowFloor && <span className="badge badge-r">⚠️ Below cost floor</span>span>}
                   {b76 && <span className="badge badge-r">⚠️ Below 76% floor</span>span>}
-                </div>div>
+                </div></div>
                 <div style={{ marginTop:10 }}>
-                        <div style={{ fontSize:13, color:"#5a6f87", marginBottom:2 }}>Blended Margin</div>div>
-                        <div className="mgn-bar"><div className="mgn-fill" style={{ width:Math.min(100,Math.max(0,m*100))+"%", background:m>=.76?accentColor:m>=.55?"#f0c36d":"#e74c3c" }} /></div>div>
-                </div>div>
-            {b76 && <div style={{ background:"#fde8e8", border:"1px solid #c0392b", borderRadius:6, padding:"9px 12px", fontSize:14, color:"#c0392b", fontWeight:600, marginTop:10 }}>🚫 Blended margin ({pct(m)}) is below the 76% minimum. Adjust discount or escalate to Sales Leadership.</div>div>}
+                        <div style={{ fontSize:13, color:"#5a6f87", marginBottom:2 }}>Blended Margin</div></div>
+                        <div className="mgn-bar"><div className="mgn-fill" style={{ width:Math.min(100,Math.max(0,m*100))+"%", background:m>=.76?accentColor:m>=.55?"#f0c36d":"#e74c3c" }} /></div></div>
+                </div></div>
+            {b76 && <div style={{ background:"#fde8e8", border:"1px solid #c0392b", borderRadius:6, padding:"9px 12px", fontSize:14, color:"#c0392b", fontWeight:600, marginTop:10 }}>🚫 Blended margin ({pct(m)}) is below the 76% minimum. Adjust discount or escalate to Sales Leadership.</div></div>}
                 <div style={{ background:"#FFF3E0", border:"1px solid #ED7D2F", borderRadius:6, padding:"9px 12px", marginTop:10, fontSize:13, color:"#10285A" }}>
                         ⚠️ Present as a <strong>single line item</strong>strong> to the customer. SW/Services split is for HubSpot entry only.
-                </div>div>
-          </div>div>
+                </div></div>
+          </div></div>
         );
 }
 
@@ -410,10 +410,10 @@ export default function QuoteBuilder() {
           const updOT  = (i, v) => { const u = [...ot];  u[i] = v;               setOT(u);  };
           return (
                   <div className="card">
-                          <div className="sec-title">Multi-Year Pricing</div>div>
+                          <div className="sec-title">Multi-Year Pricing</div></div>
                     {/* Contract length */}
                           <div style={{ marginBottom:16 }}>
-                                    <div style={{ fontSize:14, fontWeight:600, color:"#5a6f87", marginBottom:8 }}>Contract Length</div>div>
+                                    <div style={{ fontSize:14, fontWeight:600, color:"#5a6f87", marginBottom:8 }}>Contract Length</div></div>
                                     <div style={{ display:"flex", gap:6 }}>
                                       {[1,2,3,4,5].map(n => (
                                   <button key={n} onClick={() => setNumYrs(n)} style={{
@@ -422,12 +422,12 @@ export default function QuoteBuilder() {
                                                     background: numYrs===n ? BTN : "white", color: numYrs===n ? "white" : "#10285A"
                                   }}>{n}{n===1?" yr":" yrs"}</button>button>
                                 ))}
-                                    </div>div>
-                          </div>div>
+                                    </div></div>
+                          </div></div>
                     {/* YoY rates */}
                     {numYrs > 1 && (
                               <div style={{ marginBottom:16 }}>
-                                          <div style={{ fontSize:14, fontWeight:600, color:"#5a6f87", marginBottom:8 }}>Year-over-Year Increase (%)</div>div>
+                                          <div style={{ fontSize:14, fontWeight:600, color:"#5a6f87", marginBottom:8 }}>Year-over-Year Increase (%)</div></div>
                                           <div style={{ display:"flex", gap:12, flexWrap:"wrap" }}>
                                             {Array.from({ length: numYrs - 1 }, (_, i) => (
                                                 <div key={i} style={{ display:"flex", flexDirection:"column", gap:4, alignItems:"center" }}>
@@ -438,15 +438,15 @@ export default function QuoteBuilder() {
                                                                                                               onChange={e => updYoy(i, e.target.value)}
                                                                                                               style={{ textAlign:"center", paddingRight:24 }} />
                                                                                       <span className="inp-suffix">%</span>span>
-                                                                  </div>div>
-                                                </div>div>
+                                                                  </div></div>
+                                                </div></div>
                                               ))}
-                                          </div>div>
-                              </div>div>
+                                          </div></div>
+                              </div></div>
                           )}
                     {/* One-time per year */}
                           <div style={{ marginBottom:16 }}>
-                                    <div style={{ fontSize:14, fontWeight:600, color:"#5a6f87", marginBottom:8 }}>One-Time Fees (per year)</div>div>
+                                    <div style={{ fontSize:14, fontWeight:600, color:"#5a6f87", marginBottom:8 }}>One-Time Fees (per year)</div></div>
                                     <div className="ot-grid">
                                       {Array.from({ length: numYrs }, (_, i) => (
                                   <div key={i} className="ot-year">
@@ -455,14 +455,14 @@ export default function QuoteBuilder() {
                                                                       onChange={e => updOT(i, e.target.value)}
                                                                       placeholder="0"
                                                                       style={{ width:110, textAlign:"center" }} />
-                                  </div>div>
+                                  </div></div>
                                 ))}
-                                    </div>div>
-                          </div>div>
+                                    </div></div>
+                          </div></div>
                     {anyBelow76 && (
                               <div style={{ background:"#fde8e8", border:"1px solid #c0392b", borderRadius:6, padding:"9px 12px", fontSize:14, color:"#c0392b", fontWeight:600, marginBottom:12 }}>
                                           ⚠️ One or more years fall below the 76% margin floor. Review pricing before quoting.
-                              </div>div>
+                              </div></div>
                           )}
                     {/* Table */}
                           <table className="stairs">
@@ -504,8 +504,8 @@ export default function QuoteBuilder() {
                           </table>table>
                           <div style={{ fontSize:13, color:"#5a6f87", marginTop:8 }}>
                                     Year 1 reflects quoted price (post-discount). Year 2+ escalate at the YoY rate. Margin assumes Year 1 cost floor held fixed.
-                          </div>div>
-                  </div>div>
+                          </div></div>
+                  </div></div>
                 );
     };
   
@@ -592,15 +592,15 @@ export default function QuoteBuilder() {
           const fname = (isVision ? "VISION" : "Qlarity") + "_Quote_" + (client||"Draft").replace(/[^a-zA-Z0-9]/g,"_") + "_" + new Date().toISOString().slice(0,10) + ".csv";
           return (
                   <div className="card">
-                          <div className="sec-title">Export</div>div>
+                          <div className="sec-title">Export</div></div>
                           <button onClick={() => dlCSV(buildHubSpotCSV(stairsToUse, isVision, bundle, numYrs, deal, disc), fname)}
                                       style={{ background:BTN, color:"white", border:"none", borderRadius:6, padding:"9px 20px", fontSize:14, fontWeight:600, cursor:"pointer", fontFamily:"inherit" }}>
                                     ⬇ Download HubSpot Entry Sheet
                           </button>button>
                           <div style={{ fontSize:13, color:"#5a6f87", marginTop:8 }}>
                                     Maps to HubSpot field names. One deal per year for multi-year. Internal margins marked — do not share with customer.
-                          </div>div>
-                  </div>div>
+                          </div></div>
+                  </div></div>
                 );
     };
   
@@ -622,346 +622,346 @@ export default function QuoteBuilder() {
                                         border:product===p?"none":"1px solid rgba(255,255,255,.35)"
                         }}>{p}</button>button>
                       ))}
-                        </div>div>
+                        </div></div>
                         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
                                   <div>
-                                              <div style={{ color:"white", fontSize:24, fontWeight:900 }}>{product} Quote Builder</div>div>
-                                              <div style={{ color:"rgba(255,255,255,.75)", fontSize:13, marginTop:2 }}>FOCUS Learning · Internal Use Only</div>div>
-                                  </div>div>
+                                              <div style={{ color:"white", fontSize:24, fontWeight:900 }}>{product} Quote Builder</div></div>
+                                              <div style={{ color:"rgba(255,255,255,.75)", fontSize:13, marginTop:2 }}>FOCUS Learning · Internal Use Only</div></div>
+                                  </div></div>
                                   <button onClick={() => setAdmin(!admin)} style={{
                         background:admin?"rgba(255,255,255,.25)":"rgba(255,255,255,.1)",
                         border:"1px solid rgba(255,255,255,.3)", borderRadius:6, color:"white",
                         padding:"7px 16px", fontSize:13, fontWeight:600, cursor:"pointer", fontFamily:"inherit"
           }}>{admin ? "◉ Admin View" : "○ Admin View"}</button>button>
-                        </div>div>
-                </div>div>
+                        </div></div>
+                </div></div>
           
             {/* Deal Info */}
                 <div className="card">
-                        <div className="sec-title">Deal Information</div>div>
+                        <div className="sec-title">Deal Information</div></div>
                         <div className="row">
-                                  <div className="field"><label>Client Name</label>label><input value={client} onChange={e => setClient(e.target.value)} placeholder="Client name" /></div>div>
-                                  <div className="field"><label>Opportunity Owner</label>label><input value={owner} onChange={e => setOwner(e.target.value)} placeholder="AE name" /></div>div>
+                                  <div className="field"><label>Client Name</label>label><input value={client} onChange={e => setClient(e.target.value)} placeholder="Client name" /></div></div>
+                                  <div className="field"><label>Opportunity Owner</label>label><input value={owner} onChange={e => setOwner(e.target.value)} placeholder="AE name" /></div></div>
                                   <div className="field"><label>Deal Type</label>label>
                                               <select value={dealType} onChange={e => setDealType(e.target.value)}>
                                                 {DEAL_TYPES.map(t => <option key={t}>{t}</option>option>)}
                                               </select>select>
-                                  </div>div>
-                        </div>div>
-                </div>div>
+                                  </div></div>
+                        </div></div>
+                </div></div>
           
             {/* ══ VISION ══ */}
             {isV && (<>
                     <div className="card">
-                              <div className="sec-title">Product & Configuration</div>div>
+                              <div className="sec-title">Product & Configuration</div></div>
                               <div className="row">
                                           <div className="field"><label>Bundle Type</label>label>
                                                         <select value={vBundle} onChange={e => { setVBundle(e.target.value); setVOptTog({}); setVExtraP(""); }}>
                                                           {["None","Legacy","Essential","Essential Plus","Enhanced","Enterprise"].map(b => <option key={b}>{b}</option>option>)}
                                                         </select>select>
-                                          </div>div>
+                                          </div></div>
                                           <div className="field"><label>VDM Seats (concurrent)</label>label>
                                                         <input type="number" min={1} max={500} value={vSeats} onChange={e => setVSeats(Math.max(1,parseInt(e.target.value)||1))} />
-                                          </div>div>
+                                          </div></div>
                                           <div className="field"><label>Student Seats</label>label>
                                                         <input type="number" min={1} value={vStudents} onChange={e => setVStudents(parseInt(e.target.value)||1)} />
-                                          </div>div>
-                              </div>div>
+                                          </div></div>
+                              </div></div>
                               <div className="row">
                                           <div className="field"><label>On-Prem?</label>label>
                                                         <select value={vOnPrem?"Yes":"No"} onChange={e => setVOnPrem(e.target.value==="Yes")}><option>No</option>option><option>Yes</option>option></select>select>
-                                          </div>div>
+                                          </div></div>
                                           <div className="field" style={{ opacity:vOnPrem?1:.3, pointerEvents:vOnPrem?"auto":"none" }}><label>Upgrade Type</label>label>
                                                         <select value={vUpType} onChange={e => setVUpType(e.target.value)}><option>MMS</option>option><option>Self-Managed</option>option><option>In-Place</option>option></select>select>
-                                          </div>div>
-                              </div>div>
-                      {vWarn && vIsStd && <div style={{ background:"#fef3e2", border:"1px solid #f0c36d", borderRadius:6, padding:"9px 14px", fontSize:15 }}>⚠️ {vSeats} seats exceeds {vBundle} limit ({vLim.vdm}). Recommended: <strong>{vRec}</strong>strong></div>div>}
-                    </div>div>
+                                          </div></div>
+                              </div></div>
+                      {vWarn && vIsStd && <div style={{ background:"#fef3e2", border:"1px solid #f0c36d", borderRadius:6, padding:"9px 14px", fontSize:15 }}>⚠️ {vSeats} seats exceeds {vBundle} limit ({vLim.vdm}). Recommended: <strong>{vRec}</strong>strong></div></div>}
+                    </div></div>
             
               {vIsLeg && vLeg && (
                       <div className="card">
-                                  <div className="sec-title">Legacy Pricing</div>div>
+                                  <div className="sec-title">Legacy Pricing</div></div>
                                   <div style={{ background:"#f0f6fb", borderRadius:8, padding:16, marginBottom:12 }}>
-                                                <div className="dl"><span>Segment</span>span><strong>{vLeg.seg}</strong>strong></div>div>
-                                                <div className="dl"><span>Cost Floor</span>span><span>{fmt(vLeg.floor)}</span>span></div>div>
-                                                <div className="dl"><span>Implied List Price</span>span><strong>{fmt(vLeg.totalList)}</strong>strong></div>div>
-                                    {vOnPrem && <div className="dl"><span>{vUpType} Add-On</span>span><span>{fmt(vLeg.addon)}</span>span></div>div>}
-                                  </div>div>
+                                                <div className="dl"><span>Segment</span>span><strong>{vLeg.seg}</strong>strong></div></div>
+                                                <div className="dl"><span>Cost Floor</span>span><span>{fmt(vLeg.floor)}</span>span></div></div>
+                                                <div className="dl"><span>Implied List Price</span>span><strong>{fmt(vLeg.totalList)}</strong>strong></div></div>
+                                    {vOnPrem && <div className="dl"><span>{vUpType} Add-On</span>span><span>{fmt(vLeg.addon)}</span>span></div></div>}
+                                  </div></div>
                                   <div className="field" style={{ maxWidth:260 }}><label>AE Override (optional)</label>label>
                                                 <input type="number" value={vAeOvr} onChange={e => setVAeOvr(e.target.value)} placeholder="Leave blank for implied list" />
-                                  </div>div>
+                                  </div></div>
                                   <div style={{ marginTop:12 }}>
-                                                <div className="dl-total"><span>Legacy Price</span>span><span>{fmt(legP)}</span>span></div>div>
+                                                <div className="dl-total"><span>Legacy Price</span>span><span>{fmt(legP)}</span>span></div></div>
                                                 <div style={{ marginTop:8 }}>
                                                                 <span className={"badge "+(legM>=.76?"badge-g":legM>=.5?"badge-y":"badge-r")}>{pct(legM)} margin</span>span>
                                                   {legP < vLeg.floor && <span className="badge badge-r" style={{ marginLeft:8 }}>⚠️ Below cost floor</span>span>}
-                                                </div>div>
-                                  </div>div>
+                                                </div></div>
+                                  </div></div>
                         {admin && <div className="admin-box"><h4>Cost Model</h4>h4>
-                                      <div className="admin-row"><span>D&M ({VC_DM_TOTAL.toFixed(2)}/seat × {vSeats})</span>span><span className="val">{fmt(vLeg.dm)}</span>span></div>div>
-                                      <div className="admin-row"><span>Hosting</span>span><span className="val">{fmt(vLeg.host)}</span>span></div>div>
-                                      <div className="admin-row" style={{ fontWeight:700 }}><span>Cost Floor</span>span><span className="val">{fmt(vLeg.floor)}</span>span></div>div>
-                        </div>div>}
-                      </div>div>
+                                      <div className="admin-row"><span>D&M ({VC_DM_TOTAL.toFixed(2)}/seat × {vSeats})</span>span><span className="val">{fmt(vLeg.dm)}</span>span></div></div>
+                                      <div className="admin-row"><span>Hosting</span>span><span className="val">{fmt(vLeg.host)}</span>span></div></div>
+                                      <div className="admin-row" style={{ fontWeight:700 }}><span>Cost Floor</span>span><span className="val">{fmt(vLeg.floor)}</span>span></div></div>
+                        </div></div>}
+                      </div></div>
                     )}
             
               {vIsStd && (
                       <div className="card">
-                                  <div className="sec-title">Services — {vBundle}</div>div>
+                                  <div className="sec-title">Services — {vBundle}</div></div>
                         {vAuto.length > 0 && <>
-                                      <div style={{ fontSize:13, fontWeight:700, color:"#0a7c5f", textTransform:"uppercase", letterSpacing:1, marginBottom:6 }}>Included in {vBundle}</div>div>
+                                      <div style={{ fontSize:13, fontWeight:700, color:"#0a7c5f", textTransform:"uppercase", letterSpacing:1, marginBottom:6 }}>Included in {vBundle}</div></div>
                           {vAuto.map(s => (
                                         <div key={s.id} className="svc-row">
-                                                          <div className="chk auto"><Chk /></div>div>
+                                                          <div className="chk auto"><Chk /></div></div>
                                                           <div style={{ flex:1 }}>
-                                                                              <div style={{ fontWeight:600 }}>{s.name}</div>div>
-                                                            {admin && <div style={{ fontSize:13, color:"#5a6f87", marginTop:2 }}>Cost: {fmt(s.cost)} · {s.hours} hrs</div>div>}
-                                                          </div>div>
-                                                          <div style={{ fontWeight:600, color:MID }}>{fmt(s.list)}</div>div>
-                                        </div>div>
+                                                                              <div style={{ fontWeight:600 }}>{s.name}</div></div>
+                                                            {admin && <div style={{ fontSize:13, color:"#5a6f87", marginTop:2 }}>Cost: {fmt(s.cost)} · {s.hours} hrs</div></div>}
+                                                          </div></div>
+                                                          <div style={{ fontWeight:600, color:MID }}>{fmt(s.list)}</div></div>
+                                        </div></div>
                                       ))}
                         </>>}
                         {vOpt.length > 0 && <>
                                       <div style={{ fontSize:13, fontWeight:700, color:"#5a6f87", textTransform:"uppercase", letterSpacing:1, marginTop:16, marginBottom:6 }}>
                                         {vBundle==="Essential Plus"?"Select à la carte":"Optional Add-Ons"}
-                                      </div>div>
+                                      </div></div>
                           {vOpt.map(s => (
                                         <div key={s.id} className="svc-row" style={{ cursor:"pointer", userSelect:"none" }}
                                                             onClick={() => setVOptTog(p => Object.assign({}, p, { [s.id]: !p[s.id] }))}>
-                                                          <div className={"chk"+(vOptTog[s.id]?" on":"")}>{vOptTog[s.id]&&<Chk />}</div>div>
-                                                          <div style={{ flex:1 }}><div style={{ fontWeight:600 }}>{s.name}</div>div></div>div>
-                                                          <div style={{ fontWeight:600, color:MID }}>{fmt(s.list)}</div>div>
-                                        </div>div>
+                                                          <div className={"chk"+(vOptTog[s.id]?" on":"")}>{vOptTog[s.id]&&<Chk />}</div></div>
+                                                          <div style={{ flex:1 }}><div style={{ fontWeight:600 }}>{s.name}</div></div></div></div>
+                                                          <div style={{ fontWeight:600, color:MID }}>{fmt(s.list)}</div></div>
+                                        </div></div>
                                       ))}
                         </>>}
                         {vExtras.length > 0 && <>
-                                      <div style={{ fontSize:13, fontWeight:700, color:"#ED7D2F", textTransform:"uppercase", letterSpacing:1, marginTop:16, marginBottom:6 }}>Additional Services (requires scoping)</div>div>
+                                      <div style={{ fontSize:13, fontWeight:700, color:"#ED7D2F", textTransform:"uppercase", letterSpacing:1, marginTop:16, marginBottom:6 }}>Additional Services (requires scoping)</div></div>
                           {vExtras.map(ex => (
                                         <div key={ex.id} className="svc-row" style={{ opacity:.7 }}>
                                                           <div className="chk" style={{ borderColor:"#ED7D2F", borderStyle:"dashed" }} />
-                                                          <div style={{ flex:1 }}><div style={{ fontWeight:600 }}>{ex.name}</div>div></div>div>
-                                        </div>div>
+                                                          <div style={{ flex:1 }}><div style={{ fontWeight:600 }}>{ex.name}</div></div></div></div>
+                                        </div></div>
                                       ))}
                                       <div className="field" style={{ maxWidth:280, marginTop:8 }}><label>Scoped Extra Services Price</label>label>
                                                       <input type="number" value={vExtraP} onChange={e => setVExtraP(e.target.value)} placeholder="0" />
-                                      </div>div>
+                                      </div></div>
                         </>>}
                                   <div style={{ marginTop:12, padding:"10px 0", borderTop:"1px solid #e8ecf1", display:"flex", justifyContent:"space-between", fontWeight:700, fontSize:16 }}>
                                                 <span>Services Total</span>span><span>{vDeal?fmt(vDeal.svc):"$0"}</span>span>
-                                  </div>div>
-                      </div>div>
+                                  </div></div>
+                      </div></div>
                     )}
             
               {vDeal && (
                       <div className="card">
-                                  <div className="sec-title">Deal Estimate</div>div>
-                                  <div className="dl"><span>Software</span>span><span>{fmt(vDeal.sw)}</span>span></div>div>
-                                  <div className="dl"><span>Services</span>span><span>{fmt(vDeal.svc)}</span>span></div>div>
-                                  <div className="dl" style={{ fontWeight:600 }}><span>List Total</span>span><span>{fmt(vDeal.list)}</span>span></div>div>
+                                  <div className="sec-title">Deal Estimate</div></div>
+                                  <div className="dl"><span>Software</span>span><span>{fmt(vDeal.sw)}</span>span></div></div>
+                                  <div className="dl"><span>Services</span>span><span>{fmt(vDeal.svc)}</span>span></div></div>
+                                  <div className="dl" style={{ fontWeight:600 }}><span>List Total</span>span><span>{fmt(vDeal.list)}</span>span></div></div>
                                   <DiscBlock disc={vDisc} setDisc={setVDisc} deal={vDeal}
                                                   guardrails={VC.discountGuardrails[vBundle]||VC.discountGuardrails.Essential} accentColor={ACCENT} />
-                        {vDeal.discAmt > 0 && <div className="dl" style={{ color:"#5a6f87" }}><span>Discount ({pct(vDeal.discAmt/vDeal.list)})</span>span><span>{"\u2212"}{fmt(vDeal.discAmt)}</span>span></div>div>}
+                        {vDeal.discAmt > 0 && <div className="dl" style={{ color:"#5a6f87" }}><span>Discount ({pct(vDeal.discAmt/vDeal.list)})</span>span><span>{"\u2212"}{fmt(vDeal.discAmt)}</span>span></div></div>}
                                   <PriceFooter deal={vDeal} isVision={true} accentColor={ACCENT} />
                         {admin && <div className="admin-box" style={{ marginTop:12 }}><h4>Pricing Breakdown</h4>h4>
                                       <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16 }}>
                                                       <div>
-                                                                        <div style={{ fontSize:13, fontWeight:700, color:MID, marginBottom:6 }}>COST FLOOR</div>div>
-                                                                        <div className="admin-row"><span>D&M ({VC_DM_TOTAL.toFixed(2)}/seat × {vDeal.n})</span>span><span className="val">{fmt(vDeal.dmCost)}</span>span></div>div>
-                                                                        <div className="admin-row"><span>Shared hosting</span>span><span className="val">{vOnPrem?"$0":fmt(VC.sharedHostingYr)}</span>span></div>div>
-                                                                        <div className="admin-row"><span>Per-user ({vDeal.n} seats)</span>span><span className="val">{vOnPrem?"$0":fmt(VC.perUserHostingYr*vDeal.n)}</span>span></div>div>
-                                                                        <div className="admin-row" style={{ fontWeight:700, borderTop:"1px solid #ddd", paddingTop:4, marginTop:4 }}><span>Total</span>span><span className="val">{fmt(vDeal.floor)}</span>span></div>div>
-                                                      </div>div>
+                                                                        <div style={{ fontSize:13, fontWeight:700, color:MID, marginBottom:6 }}>COST FLOOR</div></div>
+                                                                        <div className="admin-row"><span>D&M ({VC_DM_TOTAL.toFixed(2)}/seat × {vDeal.n})</span>span><span className="val">{fmt(vDeal.dmCost)}</span>span></div></div>
+                                                                        <div className="admin-row"><span>Shared hosting</span>span><span className="val">{vOnPrem?"$0":fmt(VC.sharedHostingYr)}</span>span></div></div>
+                                                                        <div className="admin-row"><span>Per-user ({vDeal.n} seats)</span>span><span className="val">{vOnPrem?"$0":fmt(VC.perUserHostingYr*vDeal.n)}</span>span></div></div>
+                                                                        <div className="admin-row" style={{ fontWeight:700, borderTop:"1px solid #ddd", paddingTop:4, marginTop:4 }}><span>Total</span>span><span className="val">{fmt(vDeal.floor)}</span>span></div></div>
+                                                      </div></div>
                                                       <div>
-                                                                        <div style={{ fontSize:13, fontWeight:700, color:MID, marginBottom:6 }}>PRICE BUILD</div>div>
-                                                                        <div className="admin-row"><span>D&M list ({pct(vDeal.m.dm)})</span>span><span className="val">{fmt(vDeal.dmList)}</span>span></div>div>
-                                                                        <div className="admin-row"><span>Hosting list ({pct(vDeal.m.hosting)})</span>span><span className="val">{fmt(vDeal.hostList)}</span>span></div>div>
-                                                        {vOnPrem && <div className="admin-row"><span>+ {vUpType}</span>span><span className="val">{fmt(vDeal.addon)}</span>span></div>div>}
-                                                                        <div className="admin-row" style={{ fontWeight:700, borderTop:"1px solid #ddd", paddingTop:4, marginTop:4 }}><span>Software</span>span><span className="val">{fmt(vDeal.sw)}</span>span></div>div>
-                                                      </div>div>
-                                      </div>div>
+                                                                        <div style={{ fontSize:13, fontWeight:700, color:MID, marginBottom:6 }}>PRICE BUILD</div></div>
+                                                                        <div className="admin-row"><span>D&M list ({pct(vDeal.m.dm)})</span>span><span className="val">{fmt(vDeal.dmList)}</span>span></div></div>
+                                                                        <div className="admin-row"><span>Hosting list ({pct(vDeal.m.hosting)})</span>span><span className="val">{fmt(vDeal.hostList)}</span>span></div></div>
+                                                        {vOnPrem && <div className="admin-row"><span>+ {vUpType}</span>span><span className="val">{fmt(vDeal.addon)}</span>span></div></div>}
+                                                                        <div className="admin-row" style={{ fontWeight:700, borderTop:"1px solid #ddd", paddingTop:4, marginTop:4 }}><span>Software</span>span><span className="val">{fmt(vDeal.sw)}</span>span></div></div>
+                                                      </div></div>
+                                      </div></div>
                                       <div style={{ marginTop:12, display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:8 }}>
                                         {[["SW Margin",vDeal.swMgn,vDeal.swMgn>=.6],["Svc Margin",vDeal.svc>0?(vDeal.svc-vDeal.svcCost)/vDeal.svc:0,true],["Max Disc",vDeal.sw>0?(vDeal.sw-vDeal.floor)/vDeal.sw:0,true]].map(([l,v,g]) => (
                                           <div key={l} style={{ background:"white", borderRadius:6, padding:"9px 12px", textAlign:"center" }}>
-                                                              <div style={{ fontSize:13, color:"#5a6f87" }}>{l}</div>div>
-                                                              <div style={{ fontSize:20, fontWeight:700, color:g?"#0a7c5f":"#c0392b" }}>{pct(v)}</div>div>
-                                          </div>div>
+                                                              <div style={{ fontSize:13, color:"#5a6f87" }}>{l}</div></div>
+                                                              <div style={{ fontSize:20, fontWeight:700, color:g?"#0a7c5f":"#c0392b" }}>{pct(v)}</div></div>
+                                          </div></div>
                                         ))}
-                                      </div>div>
-                        </div>div>}
-                      </div>div>
+                                      </div></div>
+                        </div></div>}
+                      </div></div>
                     )}
             
               {vDeal && renderStaircase(vStairs, vNumYrs, setVNumYrs, vYoy, setVYoy, vOT, setVOT)}
-              {vIsOn && <div className="card"><div className="sec-title">Notes</div>div><textarea rows={3} placeholder="Deal notes, special terms, scoping details..." /></div>div>}
+              {vIsOn && <div className="card"><div className="sec-title">Notes</div></div><textarea rows={3} placeholder="Deal notes, special terms, scoping details..." /></div></div>}
               {renderExport(vStairs, vDeal, true, vBundle, vNumYrs, vIsStd, vDisc)}
             </>>)}
           
             {/* ══ QLARITY ══ */}
             {!isV && (<>
                     <div className="card">
-                              <div className="sec-title">Product & Configuration</div>div>
+                              <div className="sec-title">Product & Configuration</div></div>
                               <div className="row">
                                           <div className="field"><label>Bundle Type</label>label>
                                                         <select value={qBundle} onChange={e => { setQBundle(e.target.value); setQOptIds([]); setQPickId(QC.pickOne[0].id); }}>
                                                           {["None","Legacy","Essential","Essential Plus","Enhanced","Enterprise"].map(b => <option key={b}>{b}</option>option>)}
                                                         </select>select>
-                                          </div>div>
+                                          </div></div>
                                 {qIsStd && <>
                                               <div className="field"><label>Admin Seats</label>label>
                                                               <input type="number" min={1} value={qAdmin} onChange={e => setQAdmin(Math.max(1,parseInt(e.target.value)||1))} />
-                                              </div>div>
+                                              </div></div>
                                               <div className="field"><label>Employee Records</label>label>
                                                               <input type="number" min={1} value={qEmp} onChange={e => setQEmp(Math.max(1,parseInt(e.target.value)||1))} />
-                                              </div>div>
+                                              </div></div>
                                 </>>}
-                              </div>div>
+                              </div></div>
                       {qIsStd && (
                         <div className="row">
                                       <div className="field"><label>On-Prem?</label>label>
                                                       <select value={qOnPrem?"Yes":"No"} onChange={e => setQOnPrem(e.target.value==="Yes")}><option>No</option>option><option>Yes</option>option></select>select>
-                                      </div>div>
+                                      </div></div>
                                       <div className="field"><label>Managed IT Services?</label>label>
                                                       <select value={qMgdIT?"Yes":"No"} onChange={e => setQMgdIT(e.target.value==="Yes")}><option>No</option>option><option>Yes</option>option></select>select>
-                                      </div>div>
+                                      </div></div>
                           {(qOnPrem||qMgdIT) && (
                                           <div className="field" style={{ justifyContent:"flex-end" }}>
                                                             <div style={{ background:"#E4FEDF", borderRadius:6, padding:"9px 12px", fontSize:14, color:"#10285A", marginTop:22 }}>
                                                                                 Add-Ons: {[qOnPrem&&"On-Prem (+$15K)", qMgdIT&&"Managed IT (+$7K)"].filter(Boolean).join(" · ")}
-                                                            </div>div>
-                                          </div>div>
+                                                            </div></div>
+                                          </div></div>
                                       )}
-                        </div>div>
+                        </div></div>
                               )}
-                      {qWarn && qIsStd && <div style={{ background:"#fff3e0", border:"1px solid #E1941E", borderRadius:6, padding:"9px 14px", fontSize:15 }}>⚠️ Seat count exceeds <strong>{qBundle}</strong>strong> limits. Consider upgrading.</div>div>}
-                      {qBundle==="Essential Plus" && <div style={{ background:"#eef2fa", border:"1px solid #2E69AD", borderRadius:6, padding:"9px 14px", marginTop:4, fontSize:15, color:"#10285A" }}>ℹ️ <strong>Essential Plus:</strong>strong> Same SW price as Essential. All services are à la carte.</div>div>}
-                    </div>div>
+                      {qWarn && qIsStd && <div style={{ background:"#fff3e0", border:"1px solid #E1941E", borderRadius:6, padding:"9px 14px", fontSize:15 }}>⚠️ Seat count exceeds <strong>{qBundle}</strong>strong> limits. Consider upgrading.</div></div>}
+                      {qBundle==="Essential Plus" && <div style={{ background:"#eef2fa", border:"1px solid #2E69AD", borderRadius:6, padding:"9px 14px", marginTop:4, fontSize:15, color:"#10285A" }}>ℹ️ <strong>Essential Plus:</strong>strong> Same SW price as Essential. All services are à la carte.</div></div>}
+                    </div></div>
             
               {qIsLeg && (
                       <div className="card">
-                                  <div className="sec-title">Legacy Pricing</div>div>
+                                  <div className="sec-title">Legacy Pricing</div></div>
                                   <div style={{ background:"#f0f6fb", borderRadius:8, padding:"12px 16px", marginBottom:14, fontSize:15, color:"#575757", lineHeight:1.6 }}>
                                                 Legacy Qlarity = Prior contract value × (1 + increase %). Software only. Increase range: <strong>3–10%</strong>strong>.
-                                  </div>div>
+                                  </div></div>
                                   <div className="row">
                                                 <div className="field"><label>Prior Contract Value</label>label>
                                                                 <input type="number" value={qPrior} onChange={e => setQPrior(e.target.value)} placeholder="Enter prior ACV" />
-                                                </div>div>
+                                                </div></div>
                                                 <div className="field"><label>Increase %</label>label>
                                                                 <div className="inp-wrap">
                                                                                   <input type="number" min={3} max={10} step={0.5} value={qIncrPct}
                                                                                                         onChange={e => setQIncrPct(Math.min(10,Math.max(3,parseFloat(e.target.value)||3)))}
                                                                                                         style={{ paddingRight:30 }} />
                                                                                   <span className="inp-suffix">%</span>span>
-                                                                </div>div>
-                                                </div>div>
-                                  </div>div>
+                                                                </div></div>
+                                                </div></div>
+                                  </div></div>
                         {qLegP && <>
-                                      <div className="dl"><span>Prior Contract</span>span><span>{fmt(qLegP.prior)}</span>span></div>div>
-                                      <div className="dl"><span>Increase</span>span><span>+{qLegP.pct}% (+{fmt(qLegP.price-qLegP.prior)})</span>span></div>div>
-                                      <div className="dl-total"><span>Legacy Price</span>span><span style={{ fontSize:22 }}>{fmt(qLegP.price)}</span>span></div>div>
+                                      <div className="dl"><span>Prior Contract</span>span><span>{fmt(qLegP.prior)}</span>span></div></div>
+                                      <div className="dl"><span>Increase</span>span><span>+{qLegP.pct}% (+{fmt(qLegP.price-qLegP.prior)})</span>span></div></div>
+                                      <div className="dl-total"><span>Legacy Price</span>span><span style={{ fontSize:22 }}>{fmt(qLegP.price)}</span>span></div></div>
                         </>>}
-                      </div>div>
+                      </div></div>
                     )}
             
               {qIsStd && (
                       <div className="card">
-                                  <div className="sec-title">Services — {qBundle}</div>div>
+                                  <div className="sec-title">Services — {qBundle}</div></div>
                         {qAuto.length > 0 && <>
-                                      <div style={{ fontSize:13, fontWeight:700, color:"#0a6b5a", textTransform:"uppercase", letterSpacing:1, marginBottom:6 }}>Standard Inclusions — {qBundle}</div>div>
+                                      <div style={{ fontSize:13, fontWeight:700, color:"#0a6b5a", textTransform:"uppercase", letterSpacing:1, marginBottom:6 }}>Standard Inclusions — {qBundle}</div></div>
                           {qAuto.map(s => (
                                         <div key={s.id} className="svc-row">
-                                                          <div className="chk auto"><Chk /></div>div>
+                                                          <div className="chk auto"><Chk /></div></div>
                                                           <div style={{ flex:1 }}>
-                                                                              <div style={{ fontWeight:600 }}>{s.name}</div>div>
-                                                            {admin && <div style={{ fontSize:13, color:"#575757", marginTop:2 }}>Cost: {fmt(s.cost)}</div>div>}
-                                                          </div>div>
-                                                          <div style={{ fontWeight:600, color:MID }}>{fmt(s.list)}</div>div>
-                                        </div>div>
+                                                                              <div style={{ fontWeight:600 }}>{s.name}</div></div>
+                                                            {admin && <div style={{ fontSize:13, color:"#575757", marginTop:2 }}>Cost: {fmt(s.cost)}</div></div>}
+                                                          </div></div>
+                                                          <div style={{ fontWeight:600, color:MID }}>{fmt(s.list)}</div></div>
+                                        </div></div>
                                       ))}
                         </>>}
                         {qOpt.length > 0 && <>
                                       <div style={{ fontSize:13, fontWeight:700, color:"#575757", textTransform:"uppercase", letterSpacing:1, marginTop:18, marginBottom:6 }}>
                                         {qBundle==="Essential Plus"?"À la carte — select all that apply":"Optional Add-Ons"}
-                                      </div>div>
+                                      </div></div>
                           {qOpt.map(s => (
                                         <div key={s.id} className="svc-row" style={{ cursor:"pointer", userSelect:"none" }} onClick={() => toggleQ(s.id)}>
-                                                          <div className={"chk"+(qOptIds.includes(s.id)?" on":"")}>{qOptIds.includes(s.id)&&<Chk />}</div>div>
-                                                          <div style={{ flex:1 }}><div style={{ fontWeight:600 }}>{s.name}</div>div></div>div>
-                                                          <div style={{ fontWeight:600, color:MID }}>{fmt(s.list)}</div>div>
-                                        </div>div>
+                                                          <div className={"chk"+(qOptIds.includes(s.id)?" on":"")}>{qOptIds.includes(s.id)&&<Chk />}</div></div>
+                                                          <div style={{ flex:1 }}><div style={{ fontWeight:600 }}>{s.name}</div></div></div></div>
+                                                          <div style={{ fontWeight:600, color:MID }}>{fmt(s.list)}</div></div>
+                                        </div></div>
                                       ))}
                         </>>}
                         {qHasPick && <>
-                                      <div style={{ fontSize:13, fontWeight:700, color:"#E1941E", textTransform:"uppercase", letterSpacing:1, marginTop:18, marginBottom:8 }}>Enterprise Add-On — Select One</div>div>
+                                      <div style={{ fontSize:13, fontWeight:700, color:"#E1941E", textTransform:"uppercase", letterSpacing:1, marginTop:18, marginBottom:8 }}>Enterprise Add-On — Select One</div></div>
                           {QC.pickOne.map(p => (
                                         <div key={p.id} className={"po-opt"+(qPickId===p.id?" sel":"")} onClick={() => setQPickId(p.id)}>
-                                                          <div className="radio">{qPickId===p.id&&<div className="radio-dot" />}</div>div>
+                                                          <div className="radio">{qPickId===p.id&&<div className="radio-dot" />}</div></div>
                                                           <div style={{ flex:1 }}>
-                                                                              <div style={{ fontWeight:600 }}>{p.name}</div>div>
-                                                            {admin && <div style={{ fontSize:13, color:"#575757", marginTop:1 }}>Cost: {fmt(p.cost)}</div>div>}
-                                                          </div>div>
-                                                          <div style={{ fontWeight:600, color:MID, whiteSpace:"nowrap", marginLeft:8 }}>{fmt(p.list)}</div>div>
-                                        </div>div>
+                                                                              <div style={{ fontWeight:600 }}>{p.name}</div></div>
+                                                            {admin && <div style={{ fontSize:13, color:"#575757", marginTop:1 }}>Cost: {fmt(p.cost)}</div></div>}
+                                                          </div></div>
+                                                          <div style={{ fontWeight:600, color:MID, whiteSpace:"nowrap", marginLeft:8 }}>{fmt(p.list)}</div></div>
+                                        </div></div>
                                       ))}
                         </>>}
-                        {qBundle==="Essential Plus"&&qOptIds.length===0&&<div style={{ background:"#fff3e0", border:"1px solid #E1941E", borderRadius:6, padding:"9px 12px", fontSize:14, color:"#10285A", marginTop:6 }}>ℹ️ No services selected. Toggle on à la carte services if this deal includes any.</div>div>}
+                        {qBundle==="Essential Plus"&&qOptIds.length===0&&<div style={{ background:"#fff3e0", border:"1px solid #E1941E", borderRadius:6, padding:"9px 12px", fontSize:14, color:"#10285A", marginTop:6 }}>ℹ️ No services selected. Toggle on à la carte services if this deal includes any.</div></div>}
                                   <div style={{ marginTop:14, padding:"10px 0", borderTop:"1px solid #e8ecf1", display:"flex", justifyContent:"space-between", fontWeight:700, fontSize:16 }}>
                                                 <span>Services Total</span>span><span>{qDeal?fmt(qDeal.svc):"$0"}</span>span>
-                                  </div>div>
-                      </div>div>
+                                  </div></div>
+                      </div></div>
                     )}
             
               {qDeal && (
                       <div className="card">
-                                  <div className="sec-title">Deal Estimate</div>div>
-                                  <div className="dl"><span>Software</span>span><span>{fmt(qDeal.sw)}</span>span></div>div>
+                                  <div className="sec-title">Deal Estimate</div></div>
+                                  <div className="dl"><span>Software</span>span><span>{fmt(qDeal.sw)}</span>span></div></div>
                         {(qOnPrem||qMgdIT)&&admin&&<div style={{ paddingLeft:16 }}>
-                          {qOnPrem&&<div className="dl" style={{ fontSize:15, color:"#575757" }}><span>incl. On-Prem</span>span><span>{fmt(QC.itAddOns.onPrem)}</span>span></div>div>}
-                          {qMgdIT&&<div className="dl" style={{ fontSize:15, color:"#575757" }}><span>incl. Managed IT</span>span><span>{fmt(QC.itAddOns.managedIT)}</span>span></div>div>}
-                        </div>div>}
-                                  <div className="dl"><span>Services</span>span><span>{fmt(qDeal.svc)}</span>span></div>div>
-                                  <div className="dl" style={{ fontWeight:600 }}><span>List Total</span>span><span>{fmt(qDeal.list)}</span>span></div>div>
+                          {qOnPrem&&<div className="dl" style={{ fontSize:15, color:"#575757" }}><span>incl. On-Prem</span>span><span>{fmt(QC.itAddOns.onPrem)}</span>span></div></div>}
+                          {qMgdIT&&<div className="dl" style={{ fontSize:15, color:"#575757" }}><span>incl. Managed IT</span>span><span>{fmt(QC.itAddOns.managedIT)}</span>span></div></div>}
+                        </div></div>}
+                                  <div className="dl"><span>Services</span>span><span>{fmt(qDeal.svc)}</span>span></div></div>
+                                  <div className="dl" style={{ fontWeight:600 }}><span>List Total</span>span><span>{fmt(qDeal.list)}</span>span></div></div>
                                   <DiscBlock disc={qDisc} setDisc={setQDisc} deal={qDeal}
                                                   guardrails={QC.discountGuardrails[qBundle]||QC.discountGuardrails.Essential} accentColor={ACCENT} />
-                        {qDeal.discAmt>0&&<div className="dl" style={{ color:"#5a6f87" }}><span>Discount ({pct(qDeal.discAmt/qDeal.list)})</span>span><span>{"\u2212"}{fmt(qDeal.discAmt)}</span>span></div>div>}
+                        {qDeal.discAmt>0&&<div className="dl" style={{ color:"#5a6f87" }}><span>Discount ({pct(qDeal.discAmt/qDeal.list)})</span>span><span>{"\u2212"}{fmt(qDeal.discAmt)}</span>span></div></div>}
                                   <PriceFooter deal={qDeal} isVision={false} accentColor={ACCENT} />
                         {admin && <div className="admin-box" style={{ marginTop:12 }}><h4>Pricing Breakdown (Admin Only)</h4>h4>
                                       <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16, marginBottom:12 }}>
                                                       <div>
-                                                                        <div style={{ fontSize:13, fontWeight:700, color:MID, marginBottom:6 }}>SW PRICE BUILD</div>div>
-                                                                        <div className="admin-row"><span>Tier list</span>span><span className="val">{fmt(qDeal.swBase)}</span>span></div>div>
-                                                        {qOnPrem&&<div className="admin-row"><span>On-Prem add-on</span>span><span className="val">+{fmt(QC.itAddOns.onPrem)}</span>span></div>div>}
-                                                        {qMgdIT&&<div className="admin-row"><span>Managed IT add-on</span>span><span className="val">+{fmt(QC.itAddOns.managedIT)}</span>span></div>div>}
-                                                                        <div className="admin-row" style={{ fontWeight:700, borderTop:"1px solid #ddd", paddingTop:4, marginTop:4 }}><span>Software</span>span><span className="val">{fmt(qDeal.sw)}</span>span></div>div>
-                                                      </div>div>
+                                                                        <div style={{ fontSize:13, fontWeight:700, color:MID, marginBottom:6 }}>SW PRICE BUILD</div></div>
+                                                                        <div className="admin-row"><span>Tier list</span>span><span className="val">{fmt(qDeal.swBase)}</span>span></div></div>
+                                                        {qOnPrem&&<div className="admin-row"><span>On-Prem add-on</span>span><span className="val">+{fmt(QC.itAddOns.onPrem)}</span>span></div></div>}
+                                                        {qMgdIT&&<div className="admin-row"><span>Managed IT add-on</span>span><span className="val">+{fmt(QC.itAddOns.managedIT)}</span>span></div></div>}
+                                                                        <div className="admin-row" style={{ fontWeight:700, borderTop:"1px solid #ddd", paddingTop:4, marginTop:4 }}><span>Software</span>span><span className="val">{fmt(qDeal.sw)}</span>span></div></div>
+                                                      </div></div>
                                                       <div>
-                                                                        <div style={{ fontSize:13, fontWeight:700, color:MID, marginBottom:6 }}>COST BASIS</div>div>
-                                                                        <div className="admin-row"><span>Qlarity D&M / customer</span>span><span className="val">{fmt(QC.dmCost)}</span>span></div>div>
-                                                                        <div className="admin-row"><span>Services cost to FLC</span>span><span className="val">{fmt(qDeal.svcCost)}</span>span></div>div>
-                                                                        <div className="admin-row" style={{ fontWeight:700, borderTop:"1px solid #ddd", paddingTop:4, marginTop:4 }}><span>Cost Floor</span>span><span className="val">{fmt(qDeal.floor)}</span>span></div>div>
-                                                      </div>div>
-                                      </div>div>
-                                      <div style={{ background:"#fff8ed", border:"1px solid #E1941E", borderRadius:6, padding:"9px 12px", fontSize:14, color:"#10285A" }}>⚠️ No per-user hosting model for Qlarity — margins vs. D&M cost only; actual margin is higher.</div>div>
+                                                                        <div style={{ fontSize:13, fontWeight:700, color:MID, marginBottom:6 }}>COST BASIS</div></div>
+                                                                        <div className="admin-row"><span>Qlarity D&M / customer</span>span><span className="val">{fmt(QC.dmCost)}</span>span></div></div>
+                                                                        <div className="admin-row"><span>Services cost to FLC</span>span><span className="val">{fmt(qDeal.svcCost)}</span>span></div></div>
+                                                                        <div className="admin-row" style={{ fontWeight:700, borderTop:"1px solid #ddd", paddingTop:4, marginTop:4 }}><span>Cost Floor</span>span><span className="val">{fmt(qDeal.floor)}</span>span></div></div>
+                                                      </div></div>
+                                      </div></div>
+                                      <div style={{ background:"#fff8ed", border:"1px solid #E1941E", borderRadius:6, padding:"9px 12px", fontSize:14, color:"#10285A" }}>⚠️ No per-user hosting model for Qlarity — margins vs. D&M cost only; actual margin is higher.</div></div>
                                       <div style={{ marginTop:10, display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:8 }}>
                                         {[["SW Margin",qDeal.swMgn,qDeal.swMgn>=.7],["Svc Margin",qDeal.svc>0?(qDeal.svc-qDeal.svcCost)/qDeal.svc:0,true],["Max Disc @ floor",qDeal.list>0?(qDeal.list-qDeal.floor)/qDeal.list:0,true]].map(([l,v,g]) => (
                                           <div key={l} style={{ background:"white", borderRadius:6, padding:"9px 12px", textAlign:"center" }}>
-                                                              <div style={{ fontSize:13, color:"#575757" }}>{l}</div>div>
-                                                              <div style={{ fontSize:20, fontWeight:700, color:g?"#0a6b5a":"#c0392b" }}>{pct(v)}</div>div>
-                                          </div>div>
+                                                              <div style={{ fontSize:13, color:"#575757" }}>{l}</div></div>
+                                                              <div style={{ fontSize:20, fontWeight:700, color:g?"#0a6b5a":"#c0392b" }}>{pct(v)}</div></div>
+                                          </div></div>
                                         ))}
-                                      </div>div>
-                        </div>div>}
-                      </div>div>
+                                      </div></div>
+                        </div></div>}
+                      </div></div>
                     )}
             
               {qDeal && renderStaircase(qStairs, qNumYrs, setQNumYrs, qYoy, setQYoy, qOT, setQOT)}
-              {(qIsStd||qIsLeg) && <div className="card"><div className="sec-title">Notes</div>div><textarea rows={3} placeholder="Deal notes, special terms, scoping details..." /></div>div>}
+              {(qIsStd||qIsLeg) && <div className="card"><div className="sec-title">Notes</div></div><textarea rows={3} placeholder="Deal notes, special terms, scoping details..." /></div></div>}
               {renderExport(qStairs, qDeal, false, qBundle, qNumYrs, qIsStd, qDisc)}
             </>>)}
           
                 <div style={{ textAlign:"center", fontSize:13, color:"#8a9bb5", marginTop:14 }}>
                         FOCUS Learning · Quote Builder · Internal Use Only · Confidential
-                </div>div>
-          </div>div>
+                </div></div>
+          </div></div>
         );
 }</></></></></></></></></></></></div>
