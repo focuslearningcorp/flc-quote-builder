@@ -188,7 +188,7 @@ function dlCSV(rows, name) {
 
 // ── CSS ─────────────────────────────────────────────────────────
 
-const SHARED_CSS = \`
+const SHARED_CSS = `
   *{box-sizing:border-box}
   body{background:#f0f4f8}
   input,select{font-family:'Archivo',Arial,sans-serif;font-size:16px;border:1.5px solid #c8d6e5;border-radius:6px;padding:9px 12px;color:#10285A;transition:border-color .2s;width:100%}
@@ -239,7 +239,7 @@ const SHARED_CSS = \`
   .ot-grid{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
   .ot-year{display:flex;flex-direction:column;gap:4px;align-items:center}
   .ot-year label{font-size:13px;font-weight:600;color:#5a6f87}
-\`;
+`;
 
 // ── PURE COMPONENTS (defined OUTSIDE QuoteBuilder to avoid remount on re-render)
 
