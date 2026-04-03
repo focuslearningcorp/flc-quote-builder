@@ -1,7 +1,9 @@
 import { useState, useMemo } from "react";
 
-// ── CONFIG ─────────────────────────────────────────────────
+// ── CONFIG ───────────────────────────────────────────────────────
+
 const VC_DM_TOTAL = 73.36 + 106.71;
+
 const VC = {
   dmVdm: 73.36, dmVls: 106.71,
   sharedHostingYr: 3686.44, perUserHostingYr: 571.20,
@@ -37,6 +39,7 @@ const VC = {
     { id:"xSelfStudy", name:"Self-Study Guide Development (2/yr, SCORM)" },
   ],
 };
+
 const QC = {
   tiers: {
     Essential:        { sw: 34816,  adminLim: 5,    empLim: 10   },
@@ -69,9 +72,11 @@ const QC = {
     { id:"trnPolicy", name:"Training Policy, Procedures & Internal Controls Dev",     cost:1985, list:16671 },
   ],
 };
+
 const DEAL_TYPES = ["New in existing market", "New market", "Renewal", "Expansion"];
 
-// ── HELPERS ────────────────────────────────────────────────
+// ── HELPERS ──────────────────────────────────────────────────────
+
 const fmt = n => "$" + Math.round(n).toLocaleString();
 const pct = n => (n * 100).toFixed(1) + "%";
 
@@ -82,6 +87,7 @@ function vSvcs(bundle) {
     extras:   bundle === "Enterprise" ? VC.extras : [],
   };
 }
+
 function calcV(bundle, seats, onPrem, upType, optSvcs, extraP, discPct) {
   if (!bundle || bundle === "None" || bundle === "Legacy") return null;
   const m = VC.tierMargins[bundle] || VC.tierMargins.Essential;
@@ -107,6 +113,7 @@ function calcV(bundle, seats, onPrem, upType, optSvcs, extraP, discPct) {
     blendMgn: final > 0 ? (final - totalCost) / final : 0,
     belowFloor: final < floor };
 }
+
 function calcVLeg(onPrem, upType, seats) {
   const n = Math.max(1, seats), dm = VC_DM_TOTAL * n;
   const hostRaw = VC.sharedHostingYr + VC.perUserHostingYr * n;
@@ -116,6 +123,7 @@ function calcVLeg(onPrem, upType, seats) {
   const seg = onPrem ? ("Self-Managed" === upType ? "On-Prem · Self-Managed" : "In-Place" === upType ? "On-Prem · In-Place" : "On-Prem · MMS") : "Hosted";
   return { floor: dm + host, impliedList: dmL + hL, addon, totalList: dmL + hL + addon, seg, dm, host, dmL, hL };
 }
+
 function qSvcs(bundle) {
   if (!bundle || bundle === "None" || bundle === "Legacy") return { auto: [], optional: [], pickOne: false };
   return {
@@ -124,6 +132,7 @@ function qSvcs(bundle) {
     pickOne:  bundle === "Enterprise",
   };
 }
+
 function calcQ(bundle, onPrem, managedIT, optIds, pickId, discPct) {
   const tier = QC.tiers[bundle]; if (!tier) return null;
   const it = (onPrem ? QC.itAddOns.onPrem : 0) + (managedIT ? QC.itAddOns.managedIT : 0);
@@ -140,6 +149,7 @@ function calcQ(bundle, onPrem, managedIT, optIds, pickId, discPct) {
     blendMgn: final > 0 ? (final - floor) / final : 0,
     belowFloor: final < floor };
 }
+
 function buildStairs(sw, svc, numYrs, yoy, otArr, discPct, costFloor) {
   const dp = discPct || 0;
   const rows = [];
@@ -160,12 +170,14 @@ function buildStairs(sw, svc, numYrs, yoy, otArr, discPct, costFloor) {
   }
   return rows;
 }
+
 function buildDealName(year, dealType, client, bundle, isOutYear, multiYearStart, multiYearEnd) {
   const name = client || "(Client Name)";
   const suffix = bundle && bundle !== "None" && bundle !== "Legacy" ? " – " + bundle : "";
   if (isOutYear) return "[" + year + " Renewal] [Multi-year " + multiYearStart + "–" + multiYearEnd + "] " + name + suffix;
   return "[" + year + " " + (dealType || "New in existing market") + "] " + name + suffix;
 }
+
 function dlCSV(rows, name) {
   const esc = v => String(v ?? "").replace(/"/g, "");
   const csv = rows.filter(Boolean).map(r => r.map(esc).map(c => '"' + c + '"').join(",")).join("\n");
@@ -174,8 +186,9 @@ function dlCSV(rows, name) {
   a.download = name; a.click();
 }
 
-// ── CSS ───────────────────────────────────────────────────
-const SHARED_CSS = `
+// ── CSS ─────────────────────────────────────────────────────────
+
+const SHARED_CSS = \`
   *{box-sizing:border-box}
   body{background:#f0f4f8}
   input,select{font-family:'Archivo',Arial,sans-serif;font-size:16px;border:1.5px solid #c8d6e5;border-radius:6px;padding:9px 12px;color:#10285A;transition:border-color .2s;width:100%}
@@ -226,9 +239,10 @@ const SHARED_CSS = `
   .ot-grid{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
   .ot-year{display:flex;flex-direction:column;gap:4px;align-items:center}
   .ot-year label{font-size:13px;font-weight:600;color:#5a6f87}
-`;
+\`;
 
 // ── PURE COMPONENTS (defined OUTSIDE QuoteBuilder to avoid remount on re-render)
+
 // Chk icon
 function Chk() {
   return React.createElement("svg", { width:12, height:12, viewBox:"0 0 12 12" },
@@ -294,7 +308,8 @@ function PriceFooter({ deal, isVision, accentColor }) {
   );
 }
 
-// ── MAIN COMPONENT ────────────────────────────────────────
+// ── MAIN COMPONENT ────────────────────────────────────────────────
+
 export default function QuoteBuilder() {
   // Shared
   const [product,   setProduct]   = useState("VISION");
@@ -302,7 +317,6 @@ export default function QuoteBuilder() {
   const [client,    setClient]    = useState("");
   const [owner,     setOwner]     = useState("");
   const [dealType,  setDealType]  = useState("New in existing market");
-
   // VISION
   const [vBundle,   setVBundle]   = useState("Essential");
   const [vSeats,    setVSeats]    = useState(10);
@@ -316,7 +330,6 @@ export default function QuoteBuilder() {
   const [vNumYrs,   setVNumYrs]   = useState(1);
   const [vYoy,      setVYoy]      = useState([8, 8, 8, 8]);
   const [vOT,       setVOT]       = useState(["", "", "", "", ""]);
-
   // Qlarity
   const [qBundle,   setQBundle]   = useState("Essential");
   const [qAdmin,    setQAdmin]    = useState(3);
@@ -384,6 +397,7 @@ export default function QuoteBuilder() {
   const qStairs = useMemo(() =>
     qDeal ? buildStairs(qDeal.sw, qDeal.svc, qNumYrs, qYoy, qOT, qDisc/100, qDeal.floor) : [],
     [qDeal, qNumYrs, qYoy, qOT, qDisc]);
+
   const toggleQ = id => setQOptIds(p => p.includes(id) ? p.filter(x => x !== id) : [...p, id]);
 
   // ── Staircase render (plain function, NOT a component — prevents remount on state change)
@@ -397,7 +411,6 @@ export default function QuoteBuilder() {
     return (
       <div className="card">
         <div className="sec-title">Multi-Year Pricing</div>
-
         {/* Contract length */}
         <div style={{ marginBottom:16 }}>
           <div style={{ fontSize:14, fontWeight:600, color:"#5a6f87", marginBottom:8 }}>Contract Length</div>
@@ -411,7 +424,6 @@ export default function QuoteBuilder() {
             ))}
           </div>
         </div>
-
         {/* YoY rates */}
         {numYrs > 1 && (
           <div style={{ marginBottom:16 }}>
@@ -432,7 +444,6 @@ export default function QuoteBuilder() {
             </div>
           </div>
         )}
-
         {/* One-time per year */}
         <div style={{ marginBottom:16 }}>
           <div style={{ fontSize:14, fontWeight:600, color:"#5a6f87", marginBottom:8 }}>One-Time Fees (per year)</div>
@@ -448,13 +459,11 @@ export default function QuoteBuilder() {
             ))}
           </div>
         </div>
-
         {anyBelow76 && (
           <div style={{ background:"#fde8e8", border:"1px solid #c0392b", borderRadius:6, padding:"9px 12px", fontSize:14, color:"#c0392b", fontWeight:600, marginBottom:12 }}>
             ⚠️ One or more years fall below the 76% margin floor. Review pricing before quoting.
           </div>
         )}
-
         {/* Table */}
         <table className="stairs">
           <thead>
@@ -506,13 +515,11 @@ export default function QuoteBuilder() {
     const isMulti  = numYrs > 1;
     const rows     = [];
     const hr       = () => rows.push(["---"]);
-
-    rows.push(["FOCUS LEARNING — QUOTE BUILDER EXPORT"]);
+    rows.push(["2026 FOCUS LEARNING — QUOTE BUILDER EXPORT"]);
     rows.push(["Generated", new Date().toLocaleDateString()]);
     rows.push(["Product", isVision ? "VISION" : "Qlarity"]);
     rows.push(["For internal use only — do not share with customer"]);
     hr();
-
     // Company record
     rows.push(["UPDATE ON COMPANY RECORD IN HUBSPOT"]);
     rows.push(["HubSpot Label", "HubSpot Property", "Value"]);
@@ -530,7 +537,6 @@ export default function QuoteBuilder() {
       if (qMgdIT) rows.push(["Managed IT Services", "(Tech/Product tab)", "Yes"]);
     }
     hr();
-
     stairs.forEach((row, i) => {
       const yr        = baseYear + i;
       const isOut     = i > 0;
@@ -542,7 +548,6 @@ export default function QuoteBuilder() {
       const swAmt     = row.sw - (isVision ? addonAmt : 0);
       const renewal   = isOut ? Math.round((row.sw + row.svc) - (stairs[i-1].sw + stairs[i-1].svc)) : 0;
       const expansion = (dealType === "Expansion" && i === 0) ? Math.round(row.sw + row.svc) : 0;
-
       rows.push(["DEAL " + (i + 1) + " OF " + numYrs + (isMulti ? " — " + (isOut ? "create as separate deal (Drafting Proposal)" : "primary deal") : "")]);
       rows.push(["HubSpot Label", "HubSpot Property", "Value"]);
       rows.push(["Deal Name",                "dealname",                            dealName]);
@@ -566,7 +571,6 @@ export default function QuoteBuilder() {
       rows.push(["Blended Margin (internal)","(internal only)",                    pct(row.margin)]);
       hr();
     });
-
     rows.push(["CHECKLIST"]);
     rows.push(["","[ ] Naming convention followed"]);
     rows.push(["","[ ] Correct pipeline selected"]);
@@ -600,7 +604,8 @@ export default function QuoteBuilder() {
     );
   };
 
-  // ── RENDER ────────────────────────────────────────────────
+  // ── RENDER ──────────────────────────────────────────────────────
+
   return (
     <div style={{ "--accent":ACCENT, "--accentSoft":ASFT, "--mid":MID, fontFamily:"'Archivo',Arial,sans-serif", color:"#10285A", maxWidth:960, margin:"0 auto", padding:"24px 16px" }}>
       <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&display=swap" rel="stylesheet" />
@@ -620,14 +625,14 @@ export default function QuoteBuilder() {
         </div>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <div>
-            <div style={{ color:"white", fontSize:24, fontWeight:900 }}>{product} Quote Builder</div>
+            <div style={{ color:"white", fontSize:24, fontWeight:900 }}>2026 FOCUS Learning {product} Quote Builder</div>
             <div style={{ color:"rgba(255,255,255,.75)", fontSize:13, marginTop:2 }}>FOCUS Learning · Internal Use Only</div>
           </div>
           <button onClick={() => setAdmin(!admin)} style={{
             background:admin?"rgba(255,255,255,.25)":"rgba(255,255,255,.1)",
             border:"1px solid rgba(255,255,255,.3)", borderRadius:6, color:"white",
             padding:"7px 16px", fontSize:13, fontWeight:600, cursor:"pointer", fontFamily:"inherit"
-          }}>{admin ? "\u25c9 Admin View" : "\u25cb Admin View"}</button>
+          }}>{admin ? "◉ Admin View" : "○ Admin View"}</button>
         </div>
       </div>
 
@@ -955,7 +960,7 @@ export default function QuoteBuilder() {
       </React.Fragment>)}
 
       <div style={{ textAlign:"center", fontSize:13, color:"#8a9bb5", marginTop:14 }}>
-        FOCUS Learning · Quote Builder · Internal Use Only · Confidential
+        2026 FOCUS Learning · Quote Builder · Internal Use Only · Confidential
       </div>
     </div>
   );
